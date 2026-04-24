@@ -40,18 +40,18 @@ Deploying an instance of Veo 3.1 Studio Generator to the web requires minimal co
 
 To successfully deploy and run, you must populate the following environment variables in your Vercel project settings:
 
-| Service               | Variable                             | Description & Source                                                                         |
-| :-------------------- | :----------------------------------- | :------------------------------------------------------------------------------------------- |
-| **Database**          | `DATABASE_URL`                       | PostgreSQL connection string ([Supabase](https://supabase.com) or [Neon](https://neon.tech)) |
-|                       | `DIRECT_URL`                         | Direct DB connection for Prisma migrations                                                   |
-| **NextAuth / Google** | `NEXTAUTH_SECRET`                    | Secure random string generated via `openssl rand -base64 32`                                 |
-|                       | `NEXTAUTH_URL`                       | Your production domain (e.g. `https://my-app.vercel.app`)                                    |
-|                       | `GOOGLE_CLIENT_ID`                   | Get from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)           |
-|                       | `GOOGLE_CLIENT_SECRET`               | Get from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)           |
-| **Stripe Billing**    | `STRIPE_SECRET_KEY`                  | Get from [Stripe Dashboard](https://dashboard.stripe.com/apikeys)                            |
-|                       | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Get from [Stripe Dashboard](https://dashboard.stripe.com/apikeys)                            |
-|                       | `STRIPE_WEBHOOK_SECRET`              | Webhook secret for resolving credit purchases                                                |
-| **AI Generator**      | `VEO31_API_KEY`                      | Your MuAPI Key for Veo 3.1 generation.                                                       |
+| Service               | Variable                             | Description & Source                                                                               |
+| :-------------------- | :----------------------------------- | :------------------------------------------------------------------------------------------------- |
+| **Database**          | `DATABASE_URL`                       | PostgreSQL connection string ([Supabase](https://supabase.com) or [Neon](https://neon.tech))       |
+|                       | `DIRECT_URL`                         | Direct DB connection for Prisma migrations                                                         |
+| **NextAuth / Google** | `NEXTAUTH_SECRET`                    | Secure random string generated via `openssl rand -base64 32`                                       |
+|                       | `NEXTAUTH_URL`                       | Your production domain (e.g. `https://veo4-video-generator.vercel.app`)                            |
+|                       | `GOOGLE_CLIENT_ID`                   | Get from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)                 |
+|                       | `GOOGLE_CLIENT_SECRET`               | Get from [Google Cloud Console](https://console.cloud.google.com/apis/credentials)                 |
+| **Stripe Billing**    | `STRIPE_SECRET_KEY`                  | Get from [Stripe Dashboard](https://dashboard.stripe.com/apikeys)                                  |
+|                       | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Get from [Stripe Dashboard](https://dashboard.stripe.com/apikeys)                                  |
+|                       | `STRIPE_WEBHOOK_SECRET`              | Webhook secret for resolving credit purchases                                                      |
+| **AI Generator**      | `VEO31_API_KEY`                      | Your MuAPI Key for Veo 3.1 generation.                                                             |
 |                       | `WEBHOOK_URL`                        | The endpoint where MuAPI will send status updates (e.g., `https://your-app.com/api/webhook/muapi`) |
 
 ---
