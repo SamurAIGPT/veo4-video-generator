@@ -4,6 +4,11 @@
 
 > **A beautifully designed, fully-integrated AI video playground.** Built with Next.js, this open-source template serves as a complete, self-contained SaaS boilerplate for generating, editing, and managing high-quality AI videos fueled by the Veo 3.1 engine.
 
+## Related Projects
+
+- [Veo-4-API](https://github.com/Anil-matcha/Veo-4-API) — Python wrapper for the Veo 4 API — use the model directly in scripts
+- [veo3.1-comfyui](https://github.com/Anil-matcha/veo3.1-comfyui) — Run Veo 3.1 inside ComfyUI
+
 ## 🌐 Live Manifestation
 
 [**Experience the Veo 3.1 engine live here**](https://veo4-video-generator.vercel.app/)
