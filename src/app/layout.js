@@ -1,7 +1,7 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { Providers } from "@/components/Providers";
-import { Navbar } from "@/components/saas/Navbar";
+import { Providers } from "./providers";
+import Navbar from "@/components/Navbar";
 
 const font = Outfit({ subsets: ["latin"] });
 

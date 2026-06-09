@@ -4,6 +4,7 @@
  */
 
 const config = {
+  appName: "Veo31 Generator",
   auth: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -18,11 +19,10 @@ const config = {
     secretKey: process.env.STRIPE_SECRET_KEY,
     webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
     plans: {
-      default: {
-        amount: 50, // 50 credits
-        price: 500, // $5.00
-        currency: "usd",
-      }
+      basic: { id: "basic", name: "Basic Pack", credits: 100, price: 500 },
+      standard: { id: "standard", name: "Standard Pack", credits: 250, price: 1000 },
+      pro: { id: "pro", name: "Professional Pack", credits: 600, price: 2000 },
+      business: { id: "business", name: "Business Pack", credits: 2000, price: 5000 },
     }
   },
   ai: {
