@@ -182,6 +182,44 @@ export const AIService = {
       throw new Error(creation.error || "Generation failed.");
     }
 
+    // Direct upstream query as fallback for delayed webhooks
+    const apiKey = config.ai?.veo31?.apiKey;
+    if (apiKey) {
+      try {
+        const upstreamRes = await fetch(`https://api.muapi.ai/api/v1/predictions/${requestId}/result`, {
+          headers: {
+            "x-api-key": apiKey
+          }
+        });
+        if (upstreamRes.ok) {
+          const upstreamData = await upstreamRes.json();
+          if (upstreamData.status === "completed" && upstreamData.video_files?.[0]) {
+            const videoUrl = upstreamData.video_files[0];
+            await creationModel.update({
+              where: { requestId },
+              data: {
+                status: "completed",
+                videoFiles: upstreamData.video_files
+              }
+            });
+            return { status: "completed", videoUrl };
+          } else if (upstreamData.status === "failed") {
+            const errStr = upstreamData.error || "Generation failed";
+            await creationModel.update({
+              where: { requestId },
+              data: {
+                status: "failed",
+                error: errStr
+              }
+            });
+            throw new Error(errStr);
+          }
+        }
+      } catch (e) {
+        console.error("Direct upstream check failed:", e);
+      }
+    }
+
     return { status: "processing" };
   }
 };
