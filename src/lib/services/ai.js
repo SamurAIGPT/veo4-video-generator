@@ -193,25 +193,32 @@ export const AIService = {
         });
         if (upstreamRes.ok) {
           const upstreamData = await upstreamRes.json();
-          if (upstreamData.status === "completed" && upstreamData.video_files?.[0]) {
-            const videoUrl = upstreamData.video_files[0];
-            await creationModel.update({
-              where: { requestId },
-              data: {
-                status: "completed",
-                videoFiles: upstreamData.video_files
-              }
-            });
-            return { status: "completed", videoUrl };
-          } else if (upstreamData.status === "failed") {
+          const checkStatus = upstreamData.status || upstreamData.state;
+          if (checkStatus === "completed" || checkStatus === "succeeded") {
+            const outputs = upstreamData.outputs || [];
+            const videoUrl = outputs[0] || (typeof upstreamData.output === 'string' ? upstreamData.output : upstreamData.output?.urls?.get);
+            if (videoUrl) {
+              await creationModel.update({
+                where: { id: creation.id },
+                data: {
+                  status: "completed",
+                  videoFiles: [videoUrl]
+                }
+              });
+              return { status: "completed", videoUrl };
+            }
+          } else if (checkStatus === "failed") {
             const errStr = upstreamData.error || "Generation failed";
             await creationModel.update({
-              where: { requestId },
+              where: { id: creation.id },
               data: {
                 status: "failed",
                 error: errStr
               }
             });
+            // Refund credits
+            const cost = this.getCreditCost(creation.mode, creation.model || "lite", creation.resolution || "720p");
+            await UserService.addCredits(userId, cost);
             throw new Error(errStr);
           }
         }
