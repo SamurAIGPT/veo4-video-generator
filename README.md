@@ -12,6 +12,8 @@
 
 > 🎨 **[Explore 50+ more open-source AI apps →](https://github.com/Anil-matcha/awesome-generative-ai-apps)**
 
+https://github.com/user-attachments/assets/d2257785-e50d-434c-969e-df0892da2385
+
 ## Related Projects
 
 - [Veo-4-API](https://github.com/Anil-matcha/Veo-4-API) — Python wrapper for the Veo 4 API — use the model directly in scripts
