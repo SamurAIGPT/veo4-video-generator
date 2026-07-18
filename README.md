@@ -18,6 +18,7 @@ https://github.com/user-attachments/assets/d2257785-e50d-434c-969e-df0892da2385
 
 - [Veo-4-API](https://github.com/Anil-matcha/Veo-4-API) — Python wrapper for the Veo 4 API — use the model directly in scripts
 - [veo3.1-comfyui](https://github.com/Anil-matcha/veo3.1-comfyui) — Run Veo 3.1 inside ComfyUI
+- [awesome-ai-video-models](https://github.com/Anil-matcha/awesome-ai-video-models) — compare AI video models by API, price & speed
 
 ## 🌐 Live Manifestation
 
